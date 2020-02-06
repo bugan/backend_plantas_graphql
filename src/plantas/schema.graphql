@@ -1,0 +1,35 @@
+const {
+  gql
+} = require('apollo-server');
+
+const typeDefs = gql `
+type Planta {
+    id:ID!
+    nome: String!
+    luminosidade:Luminosidade
+    porte:Porte
+    frutifera: Boolean 
+    nomeCientifico:String
+}
+
+enum Luminosidade{
+    POUCA_LUZ
+    MUITA_LUZ
+    MEIA_SOMBRA
+    SOMBRA
+}
+  
+enum Porte{
+    PEQUENA
+    MEDIA
+    GRANDE
+}
+
+type Query {
+  plantas:[Planta]
+  planta(id:ID!):Planta
+}
+
+`;
+
+module.exports = typeDefs;

@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "Bugan",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.9.16",
+    "express": "^4.17.1",
+    "graphql": "^14.6.0"
+  },
+  "devDependencies": {
+    "apollo": "^2.22.0",
+    "nodemon": "^2.0.2"
+  },
+  "nodemonConfig": {
+    "ext": "js,json,graphql"
+  }
+}
