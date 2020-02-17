@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watch",
     "start": "nodemon index.js"
   },
   "author": "Bugan",
@@ -15,10 +15,20 @@
     "graphql": "^14.6.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-typescript": "^7.8.3",
+    "@types/jest": "^25.1.2",
     "apollo": "^2.22.0",
-    "nodemon": "^2.0.2"
+    "jest": "^25.1.0",
+    "nodemon": "^2.0.2",
+    "typescript": "^3.7.5"
   },
   "nodemonConfig": {
-    "ext": "js,json,graphql"
+    "ext": "ts,js,json,graphql"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.+(jsx|ts|js)?$": "babel-jest"
+    }
   }
 }
