@@ -7,7 +7,7 @@ export class ColecaoDePlantas {
     private plantasNaColecao: Array<PlantaDeColecao>;
     private usuario;
 
-    public get QuantidadeDePlantas(): number {
+    public get Tamanho(): number {
         return this.plantasNaColecao.length;
     }
 
@@ -20,29 +20,33 @@ export class ColecaoDePlantas {
         this.plantasNaColecao = [];
         this.usuario = usuario;
     }
-    
 
-    public adicionar(plantaDeColecao: PlantaDeColecao, mandante: Usuario) {
+
+
+    public adicionar(plantaDeColecao: PlantaDeColecao, mandante: Usuario):void {
         this.verificaControleDeAcesso(mandante);
         this.plantasNaColecao.push(plantaDeColecao);
     }
 
-    public remover(planta: PlantaDeColecao, mandante: Usuario) {
+    public remover(planta: PlantaDeColecao, mandante: Usuario):void {
         this.verificaControleDeAcesso(mandante);
         if (this.plantaExisteNaColecao(planta)) {
-            const index = this.bucarIndexDaPlanta(planta);
-            this.plantasNaColecao.splice(index, 1);
+            this.removerPlanta(planta);
         }
     }
 
-    public favoritar(plantaDeColecao: PlantaDeColecao) {
+    public favoritar(plantaDeColecao: PlantaDeColecao) :void{
         plantaDeColecao.favoritar(true)
     }
 
-    public desvavoritar(plantaDeColecao: PlantaDeColecao) {
+    public desvavoritar(plantaDeColecao: PlantaDeColecao):void {
         plantaDeColecao.favoritar(false);
     }
 
+    private removerPlanta(planta: PlantaDeColecao):void {
+        const index = this.bucarIndexDaPlanta(planta);
+        this.plantasNaColecao.splice(index, 1);
+    }
     
     private plantaExisteNaColecao(plantaDeColecao: PlantaDeColecao): boolean {
         const index: number = this.bucarIndexDaPlanta(plantaDeColecao);

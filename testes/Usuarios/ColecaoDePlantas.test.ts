@@ -12,14 +12,14 @@ describe('Uma ColecaoDePlantas', () => {
     
     it('adiciona uma plantaDecoleção na sua lista', () => {
         colecao.adicionar(new PlantaDeColecao(), usuario);
-        expect(colecao.QuantidadeDePlantas).toBe(1);
+        expect(colecao.Tamanho).toBe(1);
     });
 
     it('remove uma plantaDeColecao existente na sua lista', () => {
         const planta:PlantaDeColecao =  new PlantaDeColecao();
         colecao.adicionar(planta, usuario);
         colecao.remover(planta, usuario);
-        expect(colecao.QuantidadeDePlantas).toBe(0);
+        expect(colecao.Tamanho).toBe(0);
     });
 
     it('não deve remover uma planta que não existe de sua lista', () => {
@@ -28,7 +28,7 @@ describe('Uma ColecaoDePlantas', () => {
         colecao.adicionar(planta1, usuario);
         colecao.remover(planta, usuario);
 
-        expect(colecao.QuantidadeDePlantas).toBe(1);
+        expect(colecao.Tamanho).toBe(1);
     });
 
     it('pertence a um usuário', () => {
