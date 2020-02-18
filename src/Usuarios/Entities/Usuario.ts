@@ -3,20 +3,42 @@ import { PlantaDeColecao } from "./PlantaDeColecao";
 
 export class Usuario{
 
-    nome:string;
-    email: string;
-    colecaoDePlantas:ColecaoDePlantas;
+    private nome:string;
+    private email: string;
+    private colecaoDePlantas:ColecaoDePlantas;
     
+    public get Colecao(){
+        return this.colecaoDePlantas;
+    }
 
     constructor(nome:string, email:string){
         this.emailEhValido(email)
         this.nome = nome;
         this.email = email;
-        
     }
 
-    adicionarPlantaAColecao(planta:PlantaDeColecao){
+    public adicionarColecao(colecao:ColecaoDePlantas):void{
+        this.verificaColecao();
+        this.colecaoDePlantas = colecao;
+    }
+
+    public adicionarPlantaAColecao(planta:PlantaDeColecao):void{        
         this.colecaoDePlantas.adicionar(planta, this);
+    }
+
+    public removerPlantaDaColecao(planta:PlantaDeColecao):void{        
+        this.colecaoDePlantas.remover(planta, this);
+    }
+
+    public criarColecao():void{
+        this.verificaColecao();
+        this.colecaoDePlantas = new ColecaoDePlantas(this);
+    }
+
+    private verificaColecao() {
+        if (this.Colecao) {
+            throw new ProriedadeJaDefinida("Propriedade [ColecaoDePlantas] já está definida e não pode ser reatribuida");
+        }
     }
 
     emailEhValido(email:string){
@@ -26,3 +48,5 @@ export class Usuario{
         }
     }
 }
+
+export class ProriedadeJaDefinida extends Error{}
