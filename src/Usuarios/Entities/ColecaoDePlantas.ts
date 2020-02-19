@@ -22,12 +22,18 @@ export class ColecaoDePlantas {
 
 
     public adicionar (plantaDeColecao: PlantaDeColecao, mandante: Usuario):void {
-        this.verificaControleDeAcesso(mandante);
+        if (!this.temAutorizacaoParaAlterar(mandante)) {
+            throw new AcessoNegado("Acesso negado");
+        }
+
         this.plantasNaColecao.push(plantaDeColecao);
     }
 
     public remover (planta: PlantaDeColecao, mandante: Usuario):void {
-        this.verificaControleDeAcesso(mandante);
+        if (!this.temAutorizacaoParaAlterar(mandante)) {
+            throw new AcessoNegado("Acesso negado");
+        }
+
         if (this.plantaExisteNaColecao(planta)) {
             this.removerPlanta(planta);
         }
@@ -56,10 +62,8 @@ export class ColecaoDePlantas {
         return this.plantasNaColecao.indexOf(plantaDeColecao);
     }
 
-    private verificaControleDeAcesso (mandante: Usuario) {
-        if (mandante !== this.Proprietario) {
-            throw new AcessoNegado("Acesso negado");
-        }
+    private temAutorizacaoParaAlterar (mandante: Usuario):boolean {
+        return mandante === this.Proprietario;
     }
 }
 
