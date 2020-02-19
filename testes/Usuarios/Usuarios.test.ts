@@ -33,6 +33,7 @@ describe("Um novo usuário", () => {
     );
 });
 
+
 describe("Um usuário já criado", () => {
     let usuario;
     beforeEach(() => {
@@ -50,6 +51,7 @@ describe("Um usuário já criado", () => {
         expect(usuario.Colecao).toBeDefined();
     });
 });
+
 
 describe("Um usuário que possui uma coleção de plantas", () => {
     let usuario;
