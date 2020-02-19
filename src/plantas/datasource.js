@@ -1,31 +1,27 @@
 const {
     DataSource
-} = require('apollo-datasource');
+} = require("../node_modules/apollo-datasource");
 
 
 class plantasDS extends DataSource {
-    constructor() {
-        super();
-    }
-
-    initialize(config) {
+    initialize (config) {
         this.context = config.context;
     }
-    
+
     plantasBD = [{
-            id: 1,
-            nome: "planta 1",
-            luminosidade: "POUCA_LUZ",
-            frutifera: false,
-            nomeCientifico: "nao sei"
-        },
-        {
-            id: 2,
-            nome: "planta 2",
-            luminosidade: "SOMBRA",
-            frutifera: true,
-            nomeCientifico: "nao sei"
-        }
+        id: 1,
+        nome: "planta 1",
+        luminosidade: "POUCA_LUZ",
+        frutifera: false,
+        nomeCientifico: "nao sei"
+    },
+    {
+        id: 2,
+        nome: "planta 2",
+        luminosidade: "SOMBRA",
+        frutifera: true,
+        nomeCientifico: "nao sei"
+    }
     ]
 
     listar = () => {
@@ -33,7 +29,8 @@ class plantasDS extends DataSource {
     }
 
     buscar = (id) => {
-        return this.plantasBD.filter(planta => planta.id == id)[0];
+        return this.plantasBD.filter(planta => planta.id === id)[0];
     }
 }
 module.exports = plantasDS
+;
