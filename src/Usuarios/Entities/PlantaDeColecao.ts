@@ -8,7 +8,7 @@ export class PlantaDeColecao {
         return this.favorita;
     }
 
-    public get Detalhes () {
+    public get Detalhes ():Planta {
         return this.planta;
     }
 
